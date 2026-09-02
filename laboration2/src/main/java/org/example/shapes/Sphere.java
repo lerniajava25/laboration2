@@ -1,4 +1,4 @@
-package org.example.Shapes;
+package org.example.shapes;
 
 import org.example.math.Ray;
 import org.example.math.Vector3;
@@ -16,6 +16,6 @@ public class Sphere implements Shape{
     @Override
     public Hit hit(Ray ray) {
         //Implement collision check
-        return new Hit(false);
+        return new Hit(false, Double.POSITIVE_INFINITY);
     }
 }
