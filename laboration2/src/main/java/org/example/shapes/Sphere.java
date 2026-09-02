@@ -15,7 +15,31 @@ public class Sphere implements Shape{
 
     @Override
     public Hit hit(Ray ray) {
-        //Implement collision check
+        Vector3 offset = ray.origin().subtract(center);
+
+        double a = ray.dir().dotProduct(ray.dir());
+        double b = 2.0 * offset.dotProduct(ray.dir());
+        double c = offset.dotProduct(offset) - radius * radius;
+
+        double discriminant = b * b - 4.0 * a * c;
+
+        if (a == 0.0 || discriminant < 0.0) {
+            return new Hit(false, Double.POSITIVE_INFINITY);
+        }
+
+        double sqrtDiscriminant = Math.sqrt(discriminant);
+
+        double t1 = (-b - sqrtDiscriminant) / (2.0 * a);
+        double t2 = (-b + sqrtDiscriminant) / (2.0 * a);
+
+        if (t1 > 0.0) {
+            return new Hit(true, t1);
+        }
+
+        if (t2 > 0.0) {
+            return new Hit(true, t2);
+        }
+
         return new Hit(false, Double.POSITIVE_INFINITY);
     }
 }
