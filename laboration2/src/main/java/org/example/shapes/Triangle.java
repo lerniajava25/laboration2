@@ -17,6 +17,34 @@ public class Triangle implements Shape {
 
     @Override
     public Hit hit(Ray ray) {
-        return new Hit(false, Double.POSITIVE_INFINITY);
+
+        Vector3 edge1 = p2.subtract(p1);
+        Vector3 edge2 = p3.subtract(p1);
+
+        Vector3 cross = ray.dir().crossProduct(edge2);
+        double determinant = edge1.dotProduct(cross);
+
+        if (determinant == 0) {
+            return new Hit(false, Double.POSITIVE_INFINITY);
+        }
+
+        Vector3 fromVertex = ray.origin().subtract(p1);
+
+        double u = fromVertex.dotProduct(cross) / determinant;
+
+        Vector3 cross2 = fromVertex.crossProduct(edge1);
+        double v = ray.dir().dotProduct(cross2) / determinant;
+
+        if (u < 0 || v < 0 || u + v > 1) {
+            return new Hit(false, Double.POSITIVE_INFINITY);
+        }
+
+        double t = edge2.dotProduct(cross2) / determinant;
+
+        if (t <= 0) {
+            return new Hit(false, Double.POSITIVE_INFINITY);
+        }
+
+        return new Hit(true, Double.POSITIVE_INFINITY);
     }
 }
