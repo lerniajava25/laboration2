@@ -7,6 +7,10 @@ public record Vector3(double x, double y, double z) {
     //Register2 -> b.x  b.y  b.z  1
 
 
+    public Vector3 subtract(Vector3 other) {
+        return new Vector3(x - other.x(), y - other.y(), z - other.z());
+    }
+
     public double dotProduct(Vector3 b) {
         return this.x * b.x + this.y * b.y + this.z * b.z;
     }
