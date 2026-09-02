@@ -11,7 +11,16 @@ import org.example.shapes.Sphere;
 import org.example.shapes.Triangle;
 import org.example.math.Ray;
 
+/**
+ * Main application class for the raytracer.
+ * Creates a simple scene with geometric shapes and renders it using ray tracing.
+ */
 public class Main {
+    /**
+     * Main entry point for the raytracer application.
+     * Creates a scene with a sphere and triangle, performs ray tracing,
+     * and displays the resulting image in a window.
+     */
     static void main() {
         Scene scene = new Scene();
 

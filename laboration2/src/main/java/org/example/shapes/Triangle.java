@@ -4,6 +4,10 @@ import org.example.math.Color;
 import org.example.math.Ray;
 import org.example.math.Vector3;
 
+/**
+ * Represents a triangle in 3D space.
+ * The triangle is defined by three vertices.
+ */
 public class Triangle implements Shape {
 
     private final Vector3 p1;
@@ -11,6 +15,14 @@ public class Triangle implements Shape {
     private final Vector3 p3;
     private final Color color;
 
+    /**
+     * Constructs a new triangle with the specified vertices and color.
+     *
+     * @param p1 the first vertex of the triangle
+     * @param p2 the second vertex of the triangle
+     * @param p3 the third vertex of the triangle
+     * @param color the color of the triangle
+     */
     public Triangle(Vector3 p1, Vector3 p2, Vector3 p3, Color color) {
         this.p1 = p1;
         this.p2 = p2;
@@ -18,6 +30,13 @@ public class Triangle implements Shape {
         this.color = color;
     }
 
+    /**
+     * Determines if and where a ray intersects this triangle.
+     * Uses the Möller-Trumbore intersection algorithm.
+     *
+     * @param ray the ray to test for intersection
+     * @return a Hit record containing whether the ray hit the triangle and the distance
+     */
     @Override
     public Hit hit(Ray ray) {
 
@@ -51,6 +70,11 @@ public class Triangle implements Shape {
         return new Hit(true, t);
     }
 
+    /**
+     * Gets the color of this triangle.
+     *
+     * @return the color of the triangle
+     */
     @Override
     public Color getColor() {
         return color;
