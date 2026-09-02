@@ -1,4 +1,4 @@
 package org.example.math;
 
-public class Color {
+public record Color(int red, int green, int blue){
 }
