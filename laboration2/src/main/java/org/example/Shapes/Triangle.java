@@ -1,5 +1,8 @@
 package org.example.Shapes;
 
+import org.example.math.Ray;
+import org.example.math.Vector3;
+
 public class Triangle implements Shape {
 
     private final Vector3 p1;

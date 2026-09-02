@@ -1,5 +1,8 @@
 package org.example.Shapes;
 
+import org.example.math.Ray;
+import org.example.math.Vector3;
+
 public class Sphere implements Shape{
 
     private final Vector3 center;
